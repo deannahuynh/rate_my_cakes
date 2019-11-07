@@ -1,0 +1,25 @@
+#detailsImg {
+    height: auto;
+    width: 50%;
+    /* background-color: lightblue; */
+}
+
+#detailsImg img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+#detailsInfo {
+    width: 45%;
+    margin: 20px 0 0 20px;
+    overflow: auto;
+}
+
+.dropdown {
+    width: 18%;
+}
+
+.reviews {
+    margin-top: 20px;
+}

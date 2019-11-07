@@ -1,0 +1,10 @@
+<div id="detailsImg">
+        <img src="{{ setSelectedCake.imgUrl }}" alt="">
+    </div>
+    <div id="detailsInfo">
+        <h4>Average rating: 3.5 stars</h4>
+        <div class="reviews" *ngFor="let review of reviews">
+            <h4>Comment: {{ setSelectedCake.comment }}</h4>
+            <h4>{{ setSelectedCake.stars }} stars</h4>
+        </div>
+    </div>

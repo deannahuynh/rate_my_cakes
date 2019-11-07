@@ -1,0 +1,60 @@
+<div id="wrapper">
+  <div id="top">
+    <div id="form">
+      <h2>Rate my cakes</h2>
+      <form (submit)="createCakeFromService(newCake)">
+        <div class="form-group">
+          <label for="baker">Baker Name</label>
+          <input type="text" class="form-control" name="baker" [(ngModel)]="newCake.bakerName" id="baker">
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">Image URL</label>
+          <input type="text" class="form-control" name="url" [(ngModel)]="newCake.imgUrl" id="imageUrl">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <div id="listContainer" class="card">
+      <div class="list" *ngFor="let cake of cakes">
+        <div id="imgContainer">
+          <img src="{{ cake.imgUrl }}" alt="cake image" (click)="setSelectedCake(cake)">
+        </div>
+        <form (submit)="createReviewFromService(cake, newReview)">
+            <div class="dropdown">
+              <select class="form-control" ngModel="selectedName" name="stars" id="starsDropdown" [(ngModel)]="newReview.stars">
+                <option value="5" selected="selected">5 stars</option>
+                <option value="4">4 stars</option>
+                <option value="3">3 stars</option>
+                <option value="2">2 stars</option>
+                <option value="1">1 stars</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="imageUrl">Comment</label>
+              <input type="text" class="form-control" name="comment" [(ngModel)]="newReview.comment" id="imageUrl" placeholder="Type your comment here">
+            </div>
+            <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+  </div>
+</div>
+
+
+
+<div id="details" class="card" *ngIf="selectedCake">
+  <div id="detailsImg">
+    <img src="{{ selectedCake.imgUrl }}" alt="">
+  </div>
+  <div id="detailsInfo">
+    <h4>Average rating: 3.5 stars</h4>
+    <div class="reviews" *ngFor="let review of reviews">
+      <h4>Comment: {{ review.comment }}</h4>
+      <h4>{{ review.stars }} stars</h4>
+    </div>
+  </div>
+</div>
+  
+
+
+<router-outlet></router-outlet>
